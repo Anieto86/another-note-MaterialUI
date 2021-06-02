@@ -9,11 +9,29 @@ import {
   IconButton,
 } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import { yellow, red, blue, green } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: (note) => {
+      if (note.category === "work") {
+        return yellow[700];
+      }
+      if (note.category === "reminders") {
+        return red[700];
+      }
+      if (note.category === "money") {
+        return green[700];
+      }
+      if (note.category === "todos") {
+        return blue[700];
+      }
+    },
+  },
+});
 
 export default function NoteCard({ note, handleDeleted }) {
-  const classes = useStyles();
+  const classes = useStyles(note);
   return (
     <Card elevation={1}>
       <CardHeader
@@ -24,7 +42,7 @@ export default function NoteCard({ note, handleDeleted }) {
         }
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {note.category[0].toUpperCase()}
           </Avatar>
         }
         title={note.title}

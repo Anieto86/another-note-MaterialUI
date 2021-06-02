@@ -56,7 +56,7 @@ export default function Create() {
     setTitleError(isError);
     setDetailsError(isError);
 
-    //ver luego esta part nuevamente aca simula un POST #9
+    //ver luego esta part nuevamente aca simula un POST #9 , para crear una nueva nota.
     if (title && details) {
       fetch("http://localhost:8000/notes", {
         method: "POST",
@@ -86,7 +86,7 @@ export default function Create() {
           label="Title"
           variant="outlined"
           fullWidth
-          required
+          // required
           error={titleError}
         />
 
